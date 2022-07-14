@@ -6,10 +6,12 @@
     "start": "nodemon ./bin/www"
   },
   "nodemonConfig": {
-    "ignore": ["temp"]
+    "ignore": [
+      "temp"
+    ]
   },
-
   "dependencies": {
+    "@azure/storage-blob": "^12.11.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^16.0.1",
