@@ -90,11 +90,14 @@ router.post('/easylog_1', function(req, res, next) {
     // Upload data to the blob
     blockBlobClient.upload(jsonData, jsonData.length)
     .then( (uploadBlobResponse) =>{
-      console.log(uploadBlobResponse)
       console.log(
         "Blob was uploaded successfully. requestId: ",
         uploadBlobResponse.requestId
       )
+      if(uploadBlobResponse.requestId != undefined){
+        deleteFile()
+      }
+      
     })
     function deleteFile(){
         fs.unlink(`temp/${dateNow}.json`, (err) => {
