@@ -78,7 +78,7 @@ router.post('/easylog_1', function(req, res, next) {
     console.log('======================== request body is ===============================')
     console.log(req.body)
     let jsonData = JSON.stringify(req.body)
-    let dateNow = moment().format('MM-DD-YYYY(HH:mm:ss)')
+    let dateNow = moment().format('MM-DD-YYYY(HH-mm-ss)')
     console.log(dateNow)
     fs.writeFile(`temp/${dateNow}.json`, jsonData, function(error) {
       if (error) {
@@ -86,7 +86,7 @@ router.post('/easylog_1', function(req, res, next) {
           console.log(error);
       } 
     });
-    let blockBlobClient = containerClient.getBlockBlobClient(`${dateNow}.json`);
+    let blockBlobClient = containerClient.getBlockBlobClient(`biogas_data01/${dateNow}.json`);
     // Upload data to the blob
     blockBlobClient.upload(jsonData, jsonData.length)
     .then( (uploadBlobResponse) =>{
